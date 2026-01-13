@@ -130,12 +130,55 @@ if (contactForm) {
         // In a real application, you would send this data to a server
         console.log('Form submitted:', { name, email, phone, message });
         
-        // Show success message
-        alert('Obrigado por entrar em contato! Retornaremos em breve.');
+        // Show success message with better UX
+        showNotification('Obrigado por entrar em contato! Retornaremos em breve.', 'success');
         
         // Reset form
         contactForm.reset();
     });
+}
+
+// Simple notification function
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${type === 'success' ? '#4CAF50' : '#2196F3'};
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 10000;
+        animation: slideIn 0.3s ease-out;
+    `;
+    notification.textContent = message;
+    
+    // Add animation keyframes if not already added
+    if (!document.querySelector('#notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'notification-styles';
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(400px); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(400px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(notification);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
 }
 
 // Active Navigation Link
@@ -161,13 +204,20 @@ const highlightNavigation = () => {
 
 window.addEventListener('scroll', highlightNavigation);
 
-// Parallax Effect on Hero Section
+// Parallax Effect on Hero Section (throttled for performance)
 const hero = document.querySelector('.hero');
 if (hero) {
+    let ticking = false;
     window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        if (hero) {
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                if (hero && scrolled < window.innerHeight) {
+                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
     });
 }

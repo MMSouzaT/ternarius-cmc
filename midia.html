@@ -503,16 +503,21 @@
                 filterTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 
-                // Filter cards
+                // Filter cards using CSS classes
                 midiaCards.forEach(card => {
                     if (filter === 'todos' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
+                        card.classList.remove('hidden');
                     } else {
-                        card.style.display = 'none';
+                        card.classList.add('hidden');
                     }
                 });
             });
         });
     </script>
+    <style>
+        .midia-card.hidden {
+            display: none;
+        }
+    </style>
 </body>
 </html>
