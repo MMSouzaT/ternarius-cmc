@@ -121,20 +121,29 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
+        // Get form elements safely
+        const nameEl = document.getElementById('name');
+        const emailEl = document.getElementById('email');
+        const phoneEl = document.getElementById('phone');
+        const messageEl = document.getElementById('message');
         
-        // In a real application, you would send this data to a server
-        console.log('Form submitted:', { name, email, phone, message });
-        
-        // Show success message with better UX
-        showNotification('Obrigado por entrar em contato! Retornaremos em breve.', 'success');
-        
-        // Reset form
-        contactForm.reset();
+        // Only proceed if all elements exist
+        if (nameEl && emailEl && messageEl) {
+            // Get form values
+            const name = nameEl.value;
+            const email = emailEl.value;
+            const phone = phoneEl ? phoneEl.value : '';
+            const message = messageEl.value;
+            
+            // In a real application, you would send this data to a server
+            console.log('Form submitted:', { name, email, phone, message });
+            
+            // Show success message with better UX
+            showNotification('Obrigado por entrar em contato! Retornaremos em breve.', 'success');
+            
+            // Reset form
+            contactForm.reset();
+        }
     });
 }
 
