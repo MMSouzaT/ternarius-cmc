@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mídia - Ternarius Advocacia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .midia-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            padding: 150px 0 100px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .midia-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .midia-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.3s backwards;
+        }
+
+        .midia-container {
+            padding: 5rem 0;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.8rem 2rem;
+            border: 2px solid var(--secondary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .midia-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .midia-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .midia-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .midia-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .midia-image i {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            z-index: 1;
+        }
+
+        .midia-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .midia-content {
+            padding: 1.5rem;
+        }
+
+        .midia-date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .midia-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .midia-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .midia-source {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .midia-source i {
+            font-size: 1.2rem;
+        }
+
+        .video-section {
+            background: var(--light-bg);
+            padding: 5rem 0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .video-thumbnail i {
+            font-size: 3rem;
+            color: var(--white);
+            z-index: 1;
+        }
+
+        .play-button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(197, 165, 114, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .video-card:hover .play-button {
+            transform: scale(1.1);
+            background: var(--secondary-color);
+        }
+
+        .play-button i {
+            font-size: 1.5rem;
+            margin-left: 5px;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 1rem;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .midia-hero h1 {
+                font-size: 2rem;
+            }
+
+            .midia-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-tabs {
+                flex-direction: column;
+            }
+
+            .filter-tab {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Ternarius</span>
+                </a>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="areas-atuacao.html" class="nav-link">Áreas de Atuação</a></li>
+                    <li><a href="midia.html" class="nav-link active">Mídia</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="index.html#contato" class="nav-link btn-contact">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="midia-hero">
+        <div class="container">
+            <h1>Aparições na Mídia</h1>
+            <p>Acompanhe nossas participações em veículos de comunicação</p>
+        </div>
+    </section>
+
+    <!-- Media Content -->
+    <section class="midia-container">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Notícias e Entrevistas</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="todos">Todos</button>
+                <button class="filter-tab" data-filter="entrevista">Entrevistas</button>
+                <button class="filter-tab" data-filter="artigo">Artigos</button>
+                <button class="filter-tab" data-filter="noticia">Notícias</button>
+            </div>
+
+            <div class="midia-grid">
+                <div class="midia-card" data-category="entrevista">
+                    <div class="midia-image">
+                        <i class="fas fa-microphone"></i>
+                        <span class="midia-badge">Entrevista</span>
+                    </div>
+                    <div class="midia-content">
+                        <div class="midia-date">15 de Janeiro, 2024</div>
+                        <h3 class="midia-title">Reforma Trabalhista: Impactos nas Empresas</h3>
+                        <p class="midia-description">Advogados do Ternarius discutem as mudanças na legislação trabalhista e seus reflexos no ambiente corporativo.</p>
+                        <div class="midia-source">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Jornal Nacional - TV Globo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="midia-card" data-category="artigo">
+                    <div class="midia-image">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span class="midia-badge">Artigo</span>
+                    </div>
+                    <div class="midia-content">
+                        <div class="midia-date">10 de Janeiro, 2024</div>
+                        <h3 class="midia-title">Proteção de Dados: LGPD na Prática</h3>
+                        <p class="midia-description">Artigo publicado sobre a aplicação da Lei Geral de Proteção de Dados no cotidiano empresarial.</p>
+                        <div class="midia-source">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Folha de S.Paulo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="midia-card" data-category="noticia">
+                    <div class="midia-image">
+                        <i class="fas fa-trophy"></i>
+                        <span class="midia-badge">Notícia</span>
+                    </div>
+                    <div class="midia-content">
+                        <div class="midia-date">05 de Janeiro, 2024</div>
+                        <h3 class="midia-title">Ternarius Vence Caso de Grande Repercussão</h3>
+                        <p class="midia-description">Escritório conquista decisão favorável em caso de direito do consumidor com impacto nacional.</p>
+                        <div class="midia-source">
+                            <i class="fas fa-newspaper"></i>
+                            <span>O Estado de S. Paulo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="midia-card" data-category="entrevista">
+                    <div class="midia-image">
+                        <i class="fas fa-podcast"></i>
+                        <span class="midia-badge">Entrevista</span>
+                    </div>
+                    <div class="midia-content">
+                        <div class="midia-date">28 de Dezembro, 2023</div>
+                        <h3 class="midia-title">Direitos do Consumidor no E-commerce</h3>
+                        <p class="midia-description">Participação em podcast sobre os direitos do consumidor nas compras online e como se proteger.</p>
+                        <div class="midia-source">
+                            <i class="fas fa-podcast"></i>
+                            <span>Podcast Jurídico Brasil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="midia-card" data-category="artigo">
+                    <div class="midia-image">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="midia-badge">Artigo</span>
+                    </div>
+                    <div class="midia-content">
+                        <div class="midia-date">20 de Dezembro, 2023</div>
+                        <h3 class="midia-title">Sucessão Empresarial: Planejamento e Desafios</h3>
+                        <p class="midia-description">Análise sobre os aspectos jurídicos do planejamento sucessório em empresas familiares.</p>
+                        <div class="midia-source">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Revista Exame</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="midia-card" data-category="noticia">
+                    <div class="midia-image">
+                        <i class="fas fa-award"></i>
+                        <span class="midia-badge">Notícia</span>
+                    </div>
+                    <div class="midia-content">
+                        <div class="midia-date">15 de Dezembro, 2023</div>
+                        <h3 class="midia-title">Escritório é Reconhecido como Destaque em Direito Civil</h3>
+                        <p class="midia-description">Ternarius Advocacia recebe prêmio de excelência em prestação de serviços jurídicos.</p>
+                        <div class="midia-source">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Consultor Jurídico</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Vídeos e Palestras</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Assista nossas apresentações e comentários jurídicos</p>
+            </div>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fas fa-video"></i>
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Palestra: Direito Digital e Privacidade</h3>
+                        <div class="video-meta">
+                            <span><i class="far fa-calendar"></i> 12/01/2024</span>
+                            <span><i class="far fa-clock"></i> 45 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fas fa-video"></i>
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Webinar: Compliance Empresarial</h3>
+                        <div class="video-meta">
+                            <span><i class="far fa-calendar"></i> 08/01/2024</span>
+                            <span><i class="far fa-clock"></i> 60 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <i class="fas fa-video"></i>
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Entrevista: Reforma Tributária</h3>
+                        <div class="video-meta">
+                            <span><i class="far fa-calendar"></i> 03/01/2024</span>
+                            <span><i class="far fa-clock"></i> 30 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ternarius Advocacia</h3>
+                    <p>Excelência jurídica com compromisso e ética profissional.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="areas-atuacao.html">Áreas de Atuação</a></li>
+                        <li><a href="midia.html">Mídia</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> (11) 3456-7890</li>
+                        <li><i class="fas fa-envelope"></i> contato@ternarius.adv.br</li>
+                        <li><i class="fas fa-map-marker-alt"></i> São Paulo - SP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ternarius Advocacia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const midiaCards = document.querySelectorAll('.midia-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const filter = tab.getAttribute('data-filter');
+                
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Filter cards
+                midiaCards.forEach(card => {
+                    if (filter === 'todos' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
