@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áreas de Atuação - Ternarius Advocacia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .areas-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            padding: 150px 0 100px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .areas-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .areas-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.3s backwards;
+        }
+
+        .areas-container {
+            padding: 5rem 0;
+        }
+
+        .area-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .area-icon-wrapper {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .area-card:hover .area-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .area-icon-wrapper i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+        }
+
+        .area-content h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .area-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .area-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .area-content ul li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .area-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .areas-hero h1 {
+                font-size: 2rem;
+            }
+
+            .area-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .area-icon-wrapper {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Ternarius</span>
+                </a>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="areas-atuacao.html" class="nav-link active">Áreas de Atuação</a></li>
+                    <li><a href="midia.html" class="nav-link">Mídia</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="index.html#contato" class="nav-link btn-contact">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="areas-hero">
+        <div class="container">
+            <h1>Áreas de Atuação</h1>
+            <p>Soluções jurídicas especializadas para cada necessidade</p>
+        </div>
+    </section>
+
+    <!-- Areas Container -->
+    <section class="areas-container">
+        <div class="container">
+            <div class="area-card">
+                <div class="area-icon-wrapper">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <div class="area-content">
+                    <h3>Direito Civil</h3>
+                    <p>Atuamos em todas as esferas do direito civil, oferecendo consultoria e assessoria jurídica completa para resolver questões relacionadas a contratos, propriedade, responsabilidade civil e direitos pessoais.</p>
+                    <ul>
+                        <li>Contratos em geral</li>
+                        <li>Responsabilidade civil</li>
+                        <li>Direito imobiliário</li>
+                        <li>Indenizações</li>
+                        <li>Usucapião</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon-wrapper">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="area-content">
+                    <h3>Direito Empresarial</h3>
+                    <p>Assessoria jurídica completa para empresas de todos os portes, desde a constituição até a gestão diária, incluindo contratos comerciais, fusões, aquisições e planejamento societário.</p>
+                    <ul>
+                        <li>Constituição de empresas</li>
+                        <li>Contratos comerciais</li>
+                        <li>Direito societário</li>
+                        <li>Fusões e aquisições</li>
+                        <li>Recuperação judicial</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon-wrapper">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="area-content">
+                    <h3>Direito Trabalhista</h3>
+                    <p>Defesa dos direitos de empregados e empregadores, atuando em ações judiciais e administrativas, com foco na resolução eficiente de conflitos trabalhistas.</p>
+                    <ul>
+                        <li>Reclamações trabalhistas</li>
+                        <li>Rescisões contratuais</li>
+                        <li>Acordos trabalhistas</li>
+                        <li>Assédio moral e sexual</li>
+                        <li>Consultoria preventiva</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="area-content">
+                    <h3>Direito do Consumidor</h3>
+                    <p>Proteção e defesa dos direitos do consumidor contra práticas abusivas, vícios de produtos e serviços, e demais questões relacionadas às relações de consumo.</p>
+                    <ul>
+                        <li>Vícios de produtos e serviços</li>
+                        <li>Cobranças indevidas</li>
+                        <li>Negativação indevida</li>
+                        <li>Publicidade enganosa</li>
+                        <li>Ações coletivas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon-wrapper">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="area-content">
+                    <h3>Direito de Família</h3>
+                    <p>Assistência jurídica em questões familiares e sucessórias, sempre buscando soluções que preservem os vínculos afetivos e os interesses de todos os envolvidos.</p>
+                    <ul>
+                        <li>Divórcio e separação</li>
+                        <li>Pensão alimentícia</li>
+                        <li>Guarda de filhos</li>
+                        <li>Inventário e partilha</li>
+                        <li>Testamento</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon-wrapper">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div class="area-content">
+                    <h3>Direito Tributário</h3>
+                    <p>Assessoria especializada em questões tributárias, planejamento fiscal e defesa em processos administrativos e judiciais relacionados a tributos.</p>
+                    <ul>
+                        <li>Planejamento tributário</li>
+                        <li>Recuperação de tributos</li>
+                        <li>Defesas fiscais</li>
+                        <li>Consultoria fiscal</li>
+                        <li>Contencioso tributário</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon-wrapper">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="area-content">
+                    <h3>Direito Previdenciário</h3>
+                    <p>Defesa de direitos junto ao INSS, auxiliando na concessão, revisão e restabelecimento de benefícios previdenciários.</p>
+                    <ul>
+                        <li>Aposentadorias</li>
+                        <li>Pensões por morte</li>
+                        <li>Auxílio-doença</li>
+                        <li>Revisão de benefícios</li>
+                        <li>Planejamento previdenciário</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon-wrapper">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="area-content">
+                    <h3>Direito Contratual</h3>
+                    <p>Elaboração, análise e revisão de contratos de diversas naturezas, garantindo segurança jurídica nas relações negociais.</p>
+                    <ul>
+                        <li>Elaboração de contratos</li>
+                        <li>Revisão contratual</li>
+                        <li>Contratos internacionais</li>
+                        <li>Inadimplemento contratual</li>
+                        <li>Negociação de contratos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Precisa de Assessoria Jurídica?</h2>
+            <p>Entre em contato conosco e agende uma consulta</p>
+            <a href="index.html#contato" class="btn btn-primary">Fale Conosco</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ternarius Advocacia</h3>
+                    <p>Excelência jurídica com compromisso e ética profissional.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="areas-atuacao.html">Áreas de Atuação</a></li>
+                        <li><a href="midia.html">Mídia</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> (11) 3456-7890</li>
+                        <li><i class="fas fa-envelope"></i> contato@ternarius.adv.br</li>
+                        <li><i class="fas fa-map-marker-alt"></i> São Paulo - SP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ternarius Advocacia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
