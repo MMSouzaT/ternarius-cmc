@@ -142,7 +142,10 @@ body {
 
 /* Hero Section */
 .hero {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -150,6 +153,7 @@ body {
     text-align: center;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
     overflow: hidden;
+    z-index: -1;
 }
 
 .hero::before {
@@ -181,6 +185,8 @@ body {
     right: 0;
     bottom: 0;
     background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(26, 26, 46, 0.3) 100%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .hero-content {
@@ -329,6 +335,9 @@ section {
 /* About Section */
 .about {
     background: var(--white);
+    position: relative;
+    z-index: 1;
+    margin-top: 100vh;
 }
 
 .about-content {
@@ -396,6 +405,8 @@ section {
 .stats {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: var(--white);
+    position: relative;
+    z-index: 1;
 }
 
 .stats-grid {
@@ -429,6 +440,8 @@ section {
 /* Services Preview */
 .services-preview {
     background: var(--light-bg);
+    position: relative;
+    z-index: 1;
 }
 
 .services-grid {
@@ -491,6 +504,8 @@ section {
 /* Contact Section */
 .contact {
     background: var(--white);
+    position: relative;
+    z-index: 1;
 }
 
 .contact-content {
@@ -629,6 +644,48 @@ section {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    background: #128C7E;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float i {
+    color: white;
+    font-size: 30px;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(37, 211, 102, 0.6);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .menu-toggle {
@@ -676,6 +733,17 @@ section {
     .section-title {
         font-size: 2rem;
     }
+
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-float i {
+        font-size: 26px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -685,6 +753,17 @@ section {
 
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-float i {
+        font-size: 24px;
     }
 }
 

@@ -20,11 +20,21 @@ navLinks.forEach(link => {
 
 // Navbar Scroll Effect
 const navbar = document.getElementById('navbar');
+const heroOverlay = document.querySelector('.hero-overlay');
+
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
+    }
+    
+    // Hide hero overlay when scrolling past hero section
+    if (heroOverlay) {
+        const heroHeight = window.innerHeight;
+        const scrollPosition = window.scrollY;
+        const opacity = Math.max(0, 1 - (scrollPosition / heroHeight));
+        heroOverlay.style.opacity = opacity;
     }
 });
 
